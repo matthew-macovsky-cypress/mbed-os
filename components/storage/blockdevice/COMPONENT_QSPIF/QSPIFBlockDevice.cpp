@@ -801,7 +801,8 @@ int QSPIFBlockDevice::_sfdp_set_qpi_enabled(uint8_t *basic_param_table_ptr)
 
     // QPI 4-4-4 Enable Procedure is specified in 5 Bits
     uint8_t en_seq_444_value = (((basic_param_table_ptr[QSPIF_BASIC_PARAM_TABLE_444_MODE_EN_SEQ_BYTE] & 0xF0) >> 4) | ((
-                                                                                                                           basic_param_table_ptr[QSPIF_BASIC_PARAM_TABLE_444_MODE_EN_SEQ_BYTE 
+                                                                                                                           basic_param_table_ptr[QSPIF_BASIC_PARAM_TABLE_444_MODE_EN_SEQ_BYTE + 1] & 0x01) << 4));
+
     switch (en_seq_444_value) {
         case 1:
         case 2:
